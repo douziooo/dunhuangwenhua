@@ -3,7 +3,6 @@ import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
-  base: process.env.VITE_BASE_URL || '/',
   plugins: [vue()],
   resolve: {
     alias: {
@@ -15,4 +14,3 @@ export default defineConfig({
     open: true
   }
 })
-

@@ -3,7 +3,7 @@
     <NavBar />
     <div class="top-image-section">
       <video class="top-image" autoplay muted loop playsinline preload="auto">
-        <source src="/video/sy1.mp4" type="video/mp4" />
+        <source :src="baseURL + 'video/sy1.mp4'" type="video/mp4" />
       </video>
       <div class="image-title">
         <h1 class="dunhuang-title">敦煌文化</h1>
@@ -33,12 +33,12 @@
         <div class="about-image-box">
           <div class="cube-scene" aria-label="敦煌图片立方体">
             <div class="cube" aria-hidden="true">
-              <div class="cube-face cube-front"><img src="/images/home/s1.jpg" alt="敦煌" /></div>
-              <div class="cube-face cube-back"><img src="/images/home/s2.jpg" alt="敦煌" /></div>
-              <div class="cube-face cube-right"><img src="/images/home/s3.jpg" alt="敦煌" /></div>
-              <div class="cube-face cube-left"><img src="/images/home/s4.jpg" alt="敦煌" /></div>
-              <div class="cube-face cube-top"><img src="/images/home/s5.jpg" alt="敦煌" /></div>
-              <div class="cube-face cube-bottom"><img src="/images/home/s6.jpg" alt="敦煌" /></div>
+              <div class="cube-face cube-front"><img :src="baseURL + 'images/home/s1.jpg'" alt="敦煌" /></div>
+              <div class="cube-face cube-back"><img :src="baseURL + 'images/home/s2.jpg'" alt="敦煌" /></div>
+              <div class="cube-face cube-right"><img :src="baseURL + 'images/home/s3.jpg'" alt="敦煌" /></div>
+              <div class="cube-face cube-left"><img :src="baseURL + 'images/home/s4.jpg'" alt="敦煌" /></div>
+              <div class="cube-face cube-top"><img :src="baseURL + 'images/home/s5.jpg'" alt="敦煌" /></div>
+              <div class="cube-face cube-bottom"><img :src="baseURL + 'images/home/s6.jpg'" alt="敦煌" /></div>
             </div>
           </div>
         </div>
@@ -201,7 +201,7 @@
               <img
                 v-else
                 class="china-map-img"
-                src="/images/maps/cn-admin1.svg"
+                :src="baseURL + 'images/maps/cn-admin1.svg'"
                 alt="中国地图"
                 loading="lazy"
                 referrerpolicy="no-referrer"
@@ -248,14 +248,14 @@
             <div class="location-flip-inner" :style="{ transform: `rotateY(${locationSideRotateY}deg)` }">
               <div class="location-flip-face is-front">
                 <img
-                  src="/images/home/sy20.jpg"
+                  :src="baseURL + 'images/home/sy20.jpg'"
                   alt="敦煌"
                   loading="lazy"
                   @load="onLocationSideFrontLoad"
                 />
               </div>
               <div class="location-flip-face is-back">
-                <img src="/images/home/sy21.jpg" alt="敦煌" loading="lazy" />
+                <img :src="baseURL + 'images/home/sy21.jpg'" alt="敦煌" loading="lazy" />
               </div>
             </div>
             <button
@@ -477,6 +477,14 @@ import { useRouter } from 'vue-router'
 import NavBar from '../components/NavBar.vue'
 
 const router = useRouter()
+const baseURL = import.meta.env.BASE_URL || '/'
+
+const assetUrl = (path) => {
+  if (path.startsWith('/')) {
+    return baseURL + path.slice(1)
+  }
+  return path
+}
 
 const contactName = ref('')
 const contactEmail = ref('')
@@ -559,27 +567,27 @@ const onLocationSideFrontLoad = (e) => {
 const exploreItems = ref([
   {
     title: '敦煌风光',
-    image: '/images/home/sy10.jpg',
+    image: assetUrl('/images/home/sy10.jpg'),
     route: '/mogao'
   },
   {
     title: '壁画纹样',
-    image: '/images/home/sy11.jpg',
+    image: assetUrl('/images/home/sy11.jpg'),
     route: '/mural'
   },
   {
     title: '石窟建筑',
-    image: '/images/home/sy12.jpg',
+    image: assetUrl('/images/home/sy12.jpg'),
     route: '/mogao'
   },
   {
     title: '飞天神韵',
-    image: '/images/home/sy13.jpg',
+    image: assetUrl('/images/home/sy13.jpg'),
     route: '/feitian'
   },
   {
     title: '丝路印记',
-    image: '/images/home/sy14.jpg',
+    image: assetUrl('/images/home/sy14.jpg'),
     route: '/history'
   }
 ])
@@ -783,35 +791,35 @@ const historyStages = ref([
     range: '公元前111年—220年',
     rangeSide: 'right',
     desc: '在汉武帝时期，敦煌成为河西走廊的重要关隘与丝路枢纽。郡县设立与交通畅通，使商旅往来与文化交流在此汇聚。',
-    image: '/images/home/sy15.jpg'
+    image: assetUrl('/images/home/sy15.jpg')
   },
   {
     era: '魏晋',
     range: '220年—581年',
     rangeSide: 'left',
     desc: '魏晋南北朝时期，佛教东传加速，敦煌开始出现早期洞窟与壁画传统。多元信仰与艺术样式在这里逐步沉淀成形。',
-    image: '/images/home/sy16.jpg'
+    image: assetUrl('/images/home/sy16.jpg')
   },
   {
     era: '隋唐',
     range: '581年—907年',
     rangeSide: 'right',
     desc: '隋唐之际，丝路贸易繁盛，莫高窟迎来兴建高峰。壁画题材与绘制技法日趋成熟，形成兼容并蓄、气象宏阔的艺术面貌。',
-    image: '/images/home/sy17.jpg'
+    image: assetUrl('/images/home/sy17.jpg')
   },
   {
     era: '宋元',
     range: '960年—1368年',
     rangeSide: 'left',
     desc: '宋元时期，敦煌在边塞格局与民族往来中持续发展。洞窟营建延续不断，艺术风格呈现出更鲜明的地域与时代特征。',
-    image: '/images/home/sy18.jpg'
+    image: assetUrl('/images/home/sy18.jpg')
   },
   {
     era: '明清',
     range: '1368年—1912年',
     rangeSide: 'right',
     desc: '明清以后，敦煌逐渐淡出交通要冲，但洞窟与文献仍被守护留存。近现代的发现与研究，让敦煌重新进入世界文化视野。',
-    image: '/images/home/sy19.jpg'
+    image: assetUrl('/images/home/sy19.jpg')
   }
 ])
 
@@ -845,25 +853,25 @@ const guardians = ref([
     name: '常书鸿',
     role: '“敦煌守护神” · 莫高窟保护开拓者',
     desc: '1944年出任国立敦煌艺术研究所所长，组织洞窟调查与壁画临摹，奠定了近现代敦煌保护与研究的基础。',
-    image: '/images/home/syrw1.jpg'
+    image: assetUrl('/images/home/syrw1.jpg')
   },
   {
     name: '樊锦诗',
     role: '敦煌研究院名誉院长 · 数字敦煌推动者',
     desc: '长期扎根大漠，推动文物保护与开放利用平衡发展，推进"数字敦煌"建设，让敦煌艺术以更安全的方式走向世界。',
-    image: '/images/home/syrw2.jpg'
+    image: assetUrl('/images/home/syrw2.jpg')
   },
   {
     name: '段文杰',
     role: '敦煌研究院原院长 · 壁画学体系建设者',
     desc: '主持洞窟测绘、分期与内容研究，系统推进壁画图像学与艺术史研究，促进敦煌学学科建设与国际交流。',
-    image: '/images/home/syrw3.jpg'
+    image: assetUrl('/images/home/syrw3.jpg')
   },
   {
     name: '赵声良',
     role: '敦煌研究院研究员 · 图像与传播研究者',
     desc: '围绕敦煌图像、题材与传播路径开展研究，推动公众传播与学术普及，让敦煌故事以更易懂的方式被看见。',
-    image: '/images/home/syrw4.jpg'
+    image: assetUrl('/images/home/syrw4.jpg')
   }
 ])
 
@@ -876,7 +884,7 @@ const themes = ref([
       '这里保存了丰富的历史文化遗产，从汉代的边塞文化到唐代的繁荣盛世，每一段历史都留下了深刻的印记。'
     ],
     route: '/history',
-    image: '/images/home/sy06.jpg'
+    image: assetUrl('/images/home/sy06.jpg')
   },
   {
     label: '千窟十朝佛光，笔笔都往时间深处飞',
@@ -886,7 +894,7 @@ const themes = ref([
       '从北凉到元代，不同时期的壁画风格各异，展现了千年来艺术风格的演变，是研究中国古代绘画史的珍贵资料。'
     ],
     route: '/mural',
-    image: '/images/home/sy07.jpg'
+    image: assetUrl('/images/home/sy07.jpg')
   },
   {
     label: '日色与千年的佛光，色彩与信仰的梦',
@@ -896,7 +904,7 @@ const themes = ref([
       '现存洞窟735个，壁画4.5万平方米，泥质彩塑2415尊，是世界上规模最大的佛教石窟群，被誉为"东方艺术宝库"。'
     ],
     route: '/mogao',
-    image: '/images/home/sy08.jpg'
+    image: assetUrl('/images/home/sy08.jpg')
   },
   {
     label: '敦煌飞天散花回望，千年壁画上飘行',
@@ -906,7 +914,7 @@ const themes = ref([
       '从早期的粗犷风格到唐代的优雅飘逸，飞天形象经历了千年的演变，体现了不同时期艺术风格的特色，是敦煌艺术中最具代表性的形象之一。'
     ],
     route: '/feitian',
-    image: '/images/home/sy09.jpg'
+    image: assetUrl('/images/home/sy09.jpg')
   }
 ])
 
