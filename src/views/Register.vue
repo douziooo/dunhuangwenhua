@@ -8,7 +8,7 @@
         <!-- 左侧欢迎区域 -->
         <div class="welcome-section">
           <div class="welcome-background">
-            <img src=assetUrl("/images/login/zc1.jpg") alt="注册背景" class="welcome-image" />
+            <img :src="assetUrl('/images/login/zc1.jpg')" alt="注册背景" class="welcome-image" />
           </div>
           <div class="welcome-content">
             <h1 class="welcome-title">加入敦煌文化</h1>
