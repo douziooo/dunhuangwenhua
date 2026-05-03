@@ -81,6 +81,9 @@
 import { ref, computed, onMounted } from 'vue'
 import NavBar from '../components/NavBar.vue'
 
+const baseURL = import.meta.env.BASE_URL || '/'
+const assetUrl = (path) => path.startsWith('/') ? baseURL + path.slice(1) : path
+
 const currentIndex = ref(0)
 const isTransitioning = ref(false)
 const prevBackgroundIndex = ref(-1)
@@ -93,8 +96,8 @@ const historyPeriods = ref([
     titleEn: 'HAN DYNASTY',
     subtitle: '丝绸之路起点',
     description: '汉武帝设立敦煌郡，敦煌成为丝绸之路的重要节点。这一时期，敦煌开始成为东西方文化交流的枢纽，佛教文化开始传入。作为古代丝绸之路的咽喉要道，敦煌见证了东西方文明的首次大规模交流与融合。',
-    image: '/images/history/ls06.jpg',
-    background: '/images/history/ls01.jpg'
+    image: assetUrl('/images/history/ls06.jpg'),
+    background: assetUrl('/images/history/ls01.jpg')
   },
   {
     time: '220-589年',
@@ -102,8 +105,8 @@ const historyPeriods = ref([
     titleEn: 'WEI JIN PERIOD',
     subtitle: '莫高窟开凿',
     description: '敦煌进入佛教艺术发展的黄金时期。莫高窟开始开凿，大量精美的壁画和彩塑被创作出来，形成了独特的敦煌艺术风格。这一时期，佛教艺术与中原文化深度融合，创造了举世闻名的敦煌艺术瑰宝。',
-    image: '/images/history/ls07.jpg',
-    background: '/images/history/ls02.jpg'
+    image: assetUrl('/images/history/ls07.jpg'),
+    background: assetUrl('/images/history/ls02.jpg')
   },
   {
     time: '581-907年',
@@ -111,8 +114,8 @@ const historyPeriods = ref([
     titleEn: 'SUI TANG PERIOD',
     subtitle: '艺术巅峰',
     description: '敦煌达到历史上的鼎盛时期。莫高窟规模不断扩大，艺术水平达到巅峰。丝绸之路贸易繁荣，敦煌成为国际性大都市。这一时期，敦煌艺术达到了前所未有的高度，成为世界艺术史上的璀璨明珠。',
-    image: '/images/history/ls08.jpg',
-    background: '/images/history/ls03.jpg'
+    image: assetUrl('/images/history/ls08.jpg'),
+    background: assetUrl('/images/history/ls03.jpg')
   },
   {
     time: '960-1368年',
@@ -120,8 +123,8 @@ const historyPeriods = ref([
     titleEn: 'SONG YUAN PERIOD',
     subtitle: '多民族融合',
     description: '虽然丝绸之路逐渐衰落，但敦煌艺术仍在继续发展。西夏和元朝时期，莫高窟仍有新的洞窟开凿，艺术风格融合了多民族特色。这一时期展现了中华文化的包容性和多元性，艺术风格更加丰富多样。',
-    image: '/images/history/ls09.jpg',
-    background: '/images/history/ls04.jpg'
+    image: assetUrl('/images/history/ls09.jpg'),
+    background: assetUrl('/images/history/ls04.jpg')
   },
   {
     time: '1900年至今',
@@ -129,8 +132,8 @@ const historyPeriods = ref([
     titleEn: 'MODERN ERA',
     subtitle: '数字保护',
     description: '1900年，王道士发现藏经洞，震惊世界。敦煌学兴起，成为国际显学。如今，敦煌文化遗产得到保护和研究，数字敦煌项目让千年艺术得以永续传承。现代科技为古老艺术注入了新的生命力。',
-    image: '/images/history/ls10.jpg',
-    background: '/images/history/ls05.jpg'
+    image: assetUrl('/images/history/ls10.jpg'),
+    background: assetUrl('/images/history/ls05.jpg')
   }
 ])
 

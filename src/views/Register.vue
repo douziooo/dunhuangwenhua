@@ -8,7 +8,7 @@
         <!-- 左侧欢迎区域 -->
         <div class="welcome-section">
           <div class="welcome-background">
-            <img src="/images/login/zc1.jpg" alt="注册背景" class="welcome-image" />
+            <img src=assetUrl("/images/login/zc1.jpg") alt="注册背景" class="welcome-image" />
           </div>
           <div class="welcome-content">
             <h1 class="welcome-title">加入敦煌文化</h1>
@@ -153,6 +153,10 @@
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
+
+const baseURL = import.meta.env.BASE_URL || '/'
+const assetUrl = (path) => path.startsWith('/') ? baseURL + path.slice(1) : path
+
 import NavBar from '../components/NavBar.vue'
 
 const router = useRouter()

@@ -6,10 +6,10 @@
     <section ref="heroSectionEl" class="content-section hero-section">
       <!-- 全屏背景图 -->
       <div class="hero-background">
-        <img src="/images/feitian/ft21.jpg" alt="飞天" class="background-image" />
+        <img src=assetUrl("/images/feitian/ft21.jpg") alt="飞天" class="background-image" />
         <div class="hero-overlay-wrap" :style="heroOverlayWrapStyle" aria-hidden="true">
           <div class="hero-overlay-float">
-            <img src="/images/feitian/ft1.png" alt="" class="hero-overlay-image" />
+            <img src=assetUrl("/images/feitian/ft1.png") alt="" class="hero-overlay-image" />
             <div class="hero-overlay-watermark-cover"></div>
           </div>
         </div>
@@ -75,8 +75,8 @@
       <div class="intro-content">
         <div class="intro-image">
           <div class="intro-image-swap">
-            <img src="/images/feitian/ft07.jpg" alt="飞天" class="intro-image-img intro-image-img-base" />
-            <img src="/images/feitian/cxy.jpg" alt="" class="intro-image-img intro-image-img-hover" aria-hidden="true" />
+            <img src=assetUrl("/images/feitian/ft07.jpg") alt="飞天" class="intro-image-img intro-image-img-base" />
+            <img src=assetUrl("/images/feitian/cxy.jpg") alt="" class="intro-image-img intro-image-img-hover" aria-hidden="true" />
           </div>
             </div>
         <div class="intro-text">
@@ -174,7 +174,7 @@
         <div class="roles-grid">
           <div class="role-card">
             <div class="role-media">
-              <img src="/images/feitian/ft02.jpg" alt="伎乐飞天" class="role-img" />
+              <img src=assetUrl("/images/feitian/ft02.jpg") alt="伎乐飞天" class="role-img" />
             </div>
             <div class="role-body">
               <div class="role-name">伎乐飞天</div>
@@ -190,7 +190,7 @@
 
           <div class="role-card reverse">
             <div class="role-media">
-              <img src="/images/feitian/ft03.jpg" alt="散花飞天" class="role-img" />
+              <img src=assetUrl("/images/feitian/ft03.jpg") alt="散花飞天" class="role-img" />
             </div>
             <div class="role-body">
               <div class="role-name">散花飞天</div>
@@ -206,7 +206,7 @@
 
           <div class="role-card">
             <div class="role-media">
-              <img src="/images/feitian/ft04.jpg" alt="供养飞天" class="role-img" />
+              <img src=assetUrl("/images/feitian/ft04.jpg") alt="供养飞天" class="role-img" />
             </div>
             <div class="role-body">
               <div class="role-name">供养飞天</div>
@@ -222,7 +222,7 @@
 
           <div class="role-card reverse">
             <div class="role-media">
-              <img src="/images/feitian/ft05.jpg" alt="持莲飞天" class="role-img" />
+              <img src=assetUrl("/images/feitian/ft05.jpg") alt="持莲飞天" class="role-img" />
             </div>
             <div class="role-body">
               <div class="role-name">持莲飞天</div>
@@ -283,7 +283,7 @@
           <div class="culture-card">
             <div class="culture-media">
               <div class="ft-hover-frame">
-                <img src="/images/feitian/ft14.jpg" alt="宗教角色" class="culture-img" />
+                <img src=assetUrl("/images/feitian/ft14.jpg") alt="宗教角色" class="culture-img" />
                 <div class="ft-hover-caption" aria-hidden="true">
                   <div class="ft-hover-title">宗教角色</div>
                   <div class="ft-hover-desc">礼赞与供养的天人之舞</div>
@@ -301,7 +301,7 @@
           <div class="culture-card reverse">
             <div class="culture-media">
               <div class="ft-hover-frame">
-                <img src="/images/feitian/ft15.jpg" alt="哲学寓意" class="culture-img" />
+                <img src=assetUrl("/images/feitian/ft15.jpg") alt="哲学寓意" class="culture-img" />
                 <div class="ft-hover-caption" aria-hidden="true">
                   <div class="ft-hover-title">哲学寓意</div>
                   <div class="ft-hover-desc">空灵与自由的象征表达</div>
@@ -319,7 +319,7 @@
           <div class="culture-card">
             <div class="culture-media">
               <div class="ft-hover-frame">
-                <img src="/images/feitian/ft16.jpg" alt="丝路见证" class="culture-img" />
+                <img src=assetUrl("/images/feitian/ft16.jpg") alt="丝路见证" class="culture-img" />
                 <div class="ft-hover-caption" aria-hidden="true">
                   <div class="ft-hover-title">丝路见证</div>
                   <div class="ft-hover-desc">多元文明的交汇印记</div>
@@ -347,7 +347,7 @@
         <div class="inheritors-grid">
           <div class="inheritor-card">
             <div class="inheritor-avatar">
-              <img src="/images/feitian/ft17.jpg" alt="形态之美" />
+              <img src=assetUrl("/images/feitian/ft17.jpg") alt="形态之美" />
             </div>
             <div class="inheritor-body">
               <div class="inheritor-name">形态之美</div>
@@ -361,7 +361,7 @@
 
           <div class="inheritor-card">
             <div class="inheritor-avatar">
-              <img src="/images/feitian/ft18.jpg" alt="线条之美" />
+              <img src=assetUrl("/images/feitian/ft18.jpg") alt="线条之美" />
             </div>
             <div class="inheritor-body">
               <div class="inheritor-name">线条之美</div>
@@ -375,7 +375,7 @@
 
           <div class="inheritor-card">
             <div class="inheritor-avatar">
-              <img src="/images/feitian/ft19.jpg" alt="色彩之美" />
+              <img src=assetUrl("/images/feitian/ft19.jpg") alt="色彩之美" />
             </div>
             <div class="inheritor-body">
               <div class="inheritor-name">色彩之美</div>
@@ -389,7 +389,7 @@
 
           <div class="inheritor-card">
             <div class="inheritor-avatar">
-              <img src="/images/feitian/ft20.jpg" alt="意境之美" />
+              <img src=assetUrl("/images/feitian/ft20.jpg") alt="意境之美" />
             </div>
             <div class="inheritor-body">
               <div class="inheritor-name">意境之美</div>
@@ -416,7 +416,7 @@
           >
             <video
               class="poster-video"
-              src="/video/ft1.mp4"
+              src=assetUrl("/video/ft1.mp4")
               data-start="2"
               loop
               muted
@@ -438,7 +438,7 @@
           >
             <video
               class="poster-video"
-              src="/video/ft2.mp4"
+              src=assetUrl("/video/ft2.mp4")
               data-start="1"
               loop
               muted
@@ -460,7 +460,7 @@
           >
             <video
               class="poster-video"
-              src="/video/ft3.mp4"
+              src=assetUrl("/video/ft3.mp4")
               loop
               muted
               playsinline
@@ -566,6 +566,9 @@ import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import { ElNotification } from 'element-plus'
 import NavBar from '../components/NavBar.vue'
 
+const baseURL = import.meta.env.BASE_URL || '/'
+const assetUrl = (path) => path.startsWith('/') ? baseURL + path.slice(1) : path
+
 const currentCardIndex = ref(1) // 从1开始，因为0是克隆的最后一张
 const isTransitioning = ref(true)
 
@@ -597,14 +600,14 @@ const volume = ref(0.8)
 
 const tracks = ref([
   {
-    src: '/video/千年的祈祷.mp3',
-    cover: '/images/feitian/ft08.jpg',
+    src: assetUrl('/video/千年的祈祷.mp3'),
+    cover: assetUrl('/images/feitian/ft08.jpg'),
     title: '飞天 · 乐舞主题',
     subtitle: 'Dunhuang Feitian · Ethereal Soundscape'
   },
   {
-    src: '/video/yh.mp3',
-    cover: '/images/feitian/ft22.jpg',
+    src: assetUrl('/video/yh.mp3'),
+    cover: assetUrl('/images/feitian/ft22.jpg'),
     title: '飞天 · 乐舞主题',
     subtitle: '雨后的风景'
   }
@@ -863,27 +866,27 @@ const carouselItems = ref([
   {
     location: '北凉时期',
     title: '早期飞天形象',
-    image: '/images/feitian/ft09.jpg'
+    image: assetUrl('/images/feitian/ft09.jpg')
   },
   {
     location: '北魏时期',
     title: '过渡期飞天',
-    image: '/images/feitian/ft10.jpg'
+    image: assetUrl('/images/feitian/ft10.jpg')
   },
   {
     location: '隋代时期',
     title: '成熟期飞天',
-    image: '/images/feitian/ft11.jpg'
+    image: assetUrl('/images/feitian/ft11.jpg')
   },
   {
     location: '唐代时期',
     title: '巅峰期飞天',
-    image: '/images/feitian/ft12.jpg'
+    image: assetUrl('/images/feitian/ft12.jpg')
   },
   {
     location: '五代时期',
     title: '延续发展',
-    image: '/images/feitian/ft13.jpg'
+    image: assetUrl('/images/feitian/ft13.jpg')
   }
 ])
 

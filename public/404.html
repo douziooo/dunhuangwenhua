@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>敦煌文化</title>
+    <script>
+        // GitHub Pages SPA fallback - redirect all paths to index.html
+        (function() {
+            var path = window.location.pathname;
+            var search = window.location.search;
+            var hash = window.location.hash;
+            // Replace /dunhuangwenhua/ prefix with proper base
+            var basePath = '/dunhuangwenhua/';
+            if (path.startsWith(basePath)) {
+                path = path.substring(basePath.length - 1);
+            }
+            window.location.replace(basePath + '?redirect=' + encodeURIComponent(path + search + hash));
+        })();
+    </script>
+    <meta http-equiv="refresh" content="0;url=/dunhuangwenhua/">
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>

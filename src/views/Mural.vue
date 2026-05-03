@@ -3,7 +3,7 @@
     <NavBar />
     <div class="top-banner">
       <img 
-        src="/images/mural/bh01.jpg" 
+        :src="assetUrl('/images/mural/bh01.jpg')" 
         alt="壁画" 
         class="banner-image"
         :style="{ filter: `brightness(${1 - darkenOpacity * 0.85})` }"
@@ -28,7 +28,7 @@
         <!-- 左侧图片区域 -->
         <div class="image-section" ref="imageSectionRef">
           <div class="image-container">
-            <img src="/images/mural/bh02.jpg" alt="尊像画" class="content-image" />
+            <img :src="assetUrl('/images/mural/bh02.jpg')" alt="尊像画" class="content-image" />
           </div>
         </div>
         
@@ -80,7 +80,7 @@
         <!-- 右侧图片区域（预留） -->
         <div class="story-image-section" ref="storyImageSectionRef">
           <div class="story-image-container mural-hover-frame">
-            <img src="/images/mural/bh03.jpg" alt="佛教故事画" class="story-content-image" />
+            <img :src="assetUrl('/images/mural/bh03.jpg')" alt="佛教故事画" class="story-content-image" />
             <div class="mural-hover-dim" aria-hidden="true"></div>
             <div class="mural-hover-caption" aria-hidden="true">
               <div class="mural-hover-title">佛传故事</div>
@@ -95,7 +95,7 @@
         <!-- 左侧图片区域（预留） -->
         <div class="decoration-image-section" ref="decorationImageSectionRef">
           <div class="decoration-image-container mural-hover-frame">
-            <img src="/images/mural/bh04.jpg" alt="装饰图案画" class="decoration-content-image" />
+            <img :src="assetUrl('/images/mural/bh04.jpg')" alt="装饰图案画" class="decoration-content-image" />
             <div class="mural-hover-dim" aria-hidden="true"></div>
             <div class="mural-hover-caption" aria-hidden="true">
               <div class="mural-hover-title">装饰图案画</div>
@@ -143,7 +143,7 @@
                 </p>
                 <!-- 图片区域 -->
                 <div class="sutra-left-image-area">
-                  <img src="/images/mural/bh09.jpg" alt="经变画介绍" class="sutra-content-image" />
+                  <img :src="assetUrl('/images/mural/bh09.jpg')" alt="经变画介绍" class="sutra-content-image" />
                 </div>
                 <p>
                   经变画的内容主要包括《法华经变》《维摩诘经变》《弥勒经变》《阿弥陀经变》《药师经变》等，每一幅经变画都是对相应经典的生动诠释。画师们通过巧妙的构图、丰富的色彩、细腻的笔触，将抽象的佛教教义转化为直观的视觉形象，使得深奥的佛法变得通俗易懂。
@@ -160,7 +160,7 @@
             <div class="sutra-text-box">
               <!-- 图片区域 -->
               <div class="sutra-image-area">
-                <img src="/images/mural/bh08.jpg" alt="经变画特点" class="sutra-content-image" />
+                <img :src="assetUrl('/images/mural/bh08.jpg')" alt="经变画特点" class="sutra-content-image" />
               </div>
               <h3 class="sutra-column-title">经变画特点</h3>
               <div class="sutra-body">
@@ -173,7 +173,7 @@
               </div>
               <!-- 图片区域 -->
               <div class="sutra-middle-bottom-image-area">
-                <img src="/images/mural/bh06.jpg" alt="经变画特点" class="sutra-content-image" />
+                <img :src="assetUrl('/images/mural/bh06.jpg')" alt="经变画特点" class="sutra-content-image" />
               </div>
             </div>
           </div>
@@ -195,7 +195,7 @@
               </div>
               <!-- 图片区域 -->
               <div class="sutra-image-area sutra-right-image-area">
-                <img src="/images/mural/bh07.jpg" alt="历史演变" class="sutra-content-image" />
+                <img :src="assetUrl('/images/mural/bh07.jpg')" alt="历史演变" class="sutra-content-image" />
               </div>
             </div>
           </div>
@@ -213,7 +213,7 @@
           <div class="mural-showcase-media">
             <video
               class="mural-showcase-video"
-              src="/video/bh.mp4"
+              :src="assetUrl('/video/bh.mp4')"
               autoplay
               muted
               loop
@@ -261,6 +261,9 @@
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
+$baseURL = import.meta.env.BASE_URL || '/'
+$assetUrl = ($path) => $path.startsWith('/') ? $baseURL + $path.slice(1) : $path
+
 import NavBar from '../components/NavBar.vue'
 
 // 滚动暗化效果

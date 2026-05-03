@@ -27,14 +27,14 @@
               class="intro-video"
               loop
               playsinline
-              :poster="'/images/mogao/mg01.jpg'"
+              :poster="assetUrl('/images/mogao/mg01.jpg')"
               @loadedmetadata="onVideoLoaded"
               @timeupdate="onTimeUpdate"
               @play="isPlaying = true"
               @pause="isPlaying = false"
               @click="togglePlay"
             >
-              <source src="/video/mg01.mp4" type="video/mp4">
+              <source :src="assetUrl('/video/mg01.mp4')" type="video/mp4">
               您的浏览器不支持视频播放。
             </video>
             <div class="video-controls" :class="{ 'show': showVideoControls || !isPlaying }">
@@ -336,6 +336,9 @@
 import { ref, computed, nextTick, onMounted, onUnmounted } from 'vue'
 import NavBar from '../components/NavBar.vue'
 
+const baseURL = import.meta.env.BASE_URL || '/'
+const assetUrl = (path) => path.startsWith('/') ? baseURL + path.slice(1) : path
+
 // 视频控制
 const introVideoRef = ref(null)
 const isPlaying = ref(false)
@@ -489,21 +492,21 @@ const isTransitioning = ref(true)
 // 轮播图数据（3张图片，预留位置）
 const panoramaImages = ref([
   { 
-    src: '/images/mogao/mg01.jpg', 
+    src: assetUrl('/images/mogao/mg01.jpg'), 
     alt: '全景图1',
     buttonAction: () => {
       window.open('https://vr.justeasy.cn/view/17h24244fh27l591-1722443200.html', '_blank')
     }
   },
   { 
-    src: '/images/mogao/mg02.jpg', 
+    src: assetUrl('/images/mogao/mg02.jpg'), 
     alt: '全景图2',
     buttonAction: () => {
       window.open('https://vr.justeasy.cn/view/h91744715v3038e6-1744713036.html', '_blank')
     }
   },
   { 
-    src: '/images/mogao/mg03.jpg', 
+    src: assetUrl('/images/mogao/mg03.jpg'), 
     alt: '全景图3',
     buttonAction: () => {
       window.open('https://vr.justeasy.cn/view/1750f7ja2333q911-1750733911.html', '_blank')
@@ -606,25 +609,25 @@ const muralArtItems = ref([
   {
     title: '经变画',
     description: '经变画是莫高窟壁画的重要组成部分，通过图像的方式展现佛教经典内容，画面内容丰富，色彩绚丽，展现了古代绘画艺术的精湛技艺。',
-    image: '/images/mogao/mg12.jpg',
+    image: assetUrl('/images/mogao/mg12.jpg'),
     price: '200元'
   },
   {
     title: '本生故事画',
     description: '本生故事画描绘了释迦牟尼前世的故事，画面叙事性强，人物形象生动，体现了古代画师对故事情节的理解和表现能力。',
-    image: '/images/mogao/mg13.jpg',
+    image: assetUrl('/images/mogao/mg13.jpg'),
     price: '300元'
   },
   {
     title: '尊像画',
     description: '尊像画主要描绘佛、菩萨、弟子等形象，造型庄严，神态安详，展现了佛教艺术的崇高境界和审美追求。',
-    image: '/images/mogao/mg14.jpg',
+    image: assetUrl('/images/mogao/mg14.jpg'),
     price: '250元'
   },
   {
     title: '供养人像',
     description: '供养人像是出资开凿洞窟的功德主形象，真实反映了不同历史时期的人物服饰、社会风貌，具有重要的历史研究价值。',
-    image: '/images/mogao/mg15.jpg',
+    image: assetUrl('/images/mogao/mg15.jpg'),
     price: '180元'
   }
 ])
@@ -653,17 +656,17 @@ const artValueItems = ref([
   {
     title: '历史价值',
     description: '莫高窟见证了丝绸之路的繁荣，记录了东西方文化交流的历史，是研究中国古代历史、宗教、艺术、民俗等的重要资料库。',
-    image: '/images/mogao/mg09.jpg'
+    image: assetUrl('/images/mogao/mg09.jpg')
   },
   {
     title: '艺术价值',
     description: '莫高窟的壁画和彩塑代表了中国古代绘画和雕塑艺术的最高成就，其独特的风格和精湛的技艺对后世艺术产生了深远影响。',
-    image: '/images/mogao/mg10.jpg'
+    image: assetUrl('/images/mogao/mg10.jpg')
   },
   {
     title: '文化价值',
     description: '莫高窟融合了多种文化元素，展现了中华文明的包容性和创造性，是中华优秀传统文化的重要载体和世界文化遗产的瑰宝。',
-    image: '/images/mogao/mg11.jpg'
+    image: assetUrl('/images/mogao/mg11.jpg')
   }
 ])
 
@@ -674,7 +677,7 @@ const heritageListItems = ref([
     hours: '8:00-21:00',
     suggested: '1-2h',
     quote: '丝绸之路上的重镇，“劝君更尽一杯酒，西出阳关无故人”',
-    image: '/images/mogao/mg16.jpg'
+    image: assetUrl('/images/mogao/mg16.jpg')
   },
   {
     title: '玉门关遗址',
@@ -682,7 +685,7 @@ const heritageListItems = ref([
     hours: '7:00-20:00',
     suggested: '1-2h',
     quote: '曾随丝绸之路三通三绝而屡次兴废，“春风不度玉门关”',
-    image: '/images/mogao/mg17.jpg'
+    image: assetUrl('/images/mogao/mg17.jpg')
   },
   {
     title: '敦煌博物馆',
@@ -690,7 +693,7 @@ const heritageListItems = ref([
     hours: '9:00-18:00',
     suggested: '1.5-2h',
     quote: '聚焦丝路与敦煌文化的展陈，系统了解莫高艺术的时代脉络',
-    image: '/images/mogao/mg18.jpg'
+    image: assetUrl('/images/mogao/mg18.jpg')
   }
 ])
 
@@ -701,7 +704,7 @@ const heritageListItemsRight = ref([
     hours: '7:00-23:00',
     suggested: '1-2h',
     quote: '拍照爱好者可去，人造景，有大明宫、太和殿、帕特农神庙等',
-    image: '/images/mogao/mg19.jpg'
+    image: assetUrl('/images/mogao/mg19.jpg')
   },
   {
     title: '敦煌古城',
@@ -709,7 +712,7 @@ const heritageListItemsRight = ref([
     hours: '8:30-17:00',
     suggested: '1-2h',
     quote: '仿宋朝沙洲古城的影视城，《封神演义》《新龙门客栈》取景地',
-    image: '/images/mogao/mg20.jpg'
+    image: assetUrl('/images/mogao/mg20.jpg')
   },
   {
     title: '月牙泉小镇',
@@ -717,7 +720,7 @@ const heritageListItemsRight = ref([
     hours: '全天',
     suggested: '1-2h',
     quote: '古汉式建筑，有客栈和各类餐饮，充满地域特色',
-    image: '/images/mogao/mg21.jpg'
+    image: assetUrl('/images/mogao/mg21.jpg')
   }
 ])
 
