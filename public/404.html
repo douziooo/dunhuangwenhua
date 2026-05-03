@@ -5,20 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>敦煌文化</title>
     <script>
-        // GitHub Pages SPA fallback - redirect all paths to index.html
+        // GitHub Pages SPA fallback - preserve the current route
         (function() {
             var path = window.location.pathname;
             var search = window.location.search;
             var hash = window.location.hash;
-            // Replace /dunhuangwenhua/ prefix with proper base
             var basePath = '/dunhuangwenhua/';
-            if (path.startsWith(basePath)) {
-                path = path.substring(basePath.length - 1);
-            }
-            window.location.replace(basePath + '?redirect=' + encodeURIComponent(path + search + hash));
+            // Extract the sub-path after /dunhuangwenhua/
+            var subPath = path.substring(basePath.length - 1);
+            if (subPath === '' || subPath === '/') subPath = '/';
+            var redirectParam = encodeURIComponent(subPath + search + hash);
+            window.location.replace(basePath + '?redirect=' + redirectParam);
         })();
     </script>
-    <meta http-equiv="refresh" content="0;url=/dunhuangwenhua/">
 </head>
 <body>
     <p>Redirecting...</p>

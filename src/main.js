@@ -6,6 +6,14 @@ import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import './styles/main.css'
 
+// Handle 404 redirect from GitHub Pages SPA fallback
+const params = new URLSearchParams(window.location.search)
+const redirect = params.get('redirect')
+if (redirect) {
+  window.history.replaceState({}, '', window.location.pathname)
+  router.replace(decodeURIComponent(redirect))
+}
+
 const app = createApp(App)
 
 // 注册所有Element Plus图标

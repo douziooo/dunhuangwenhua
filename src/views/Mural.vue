@@ -261,8 +261,8 @@
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
-$baseURL = import.meta.env.BASE_URL || '/'
-$assetUrl = ($path) => $path.startsWith('/') ? $baseURL + $path.slice(1) : $path
+const baseURL = import.meta.env.BASE_URL || '/'
+const assetUrl = (path) => path.startsWith('/') ? baseURL + path.slice(1) : path
 
 import NavBar from '../components/NavBar.vue'
 
