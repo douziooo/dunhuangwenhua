@@ -32,68 +32,47 @@
 </template>
 
 <script setup>
-import { onMounted, watch } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { ElMessageBox } from 'element-plus'
 
 const router = useRouter()
 const route = useRoute()
+const navbarOpacity = ref(1)
+const isLoggedIn = computed(() => localStorage.getItem('isLoggedIn') === 'true')
 
 // 滚动控制导航栏透明度
-let lastScrollTop = 0
-
-// 移动端菜单展开状态
-let mobileMenuOpen = false
-
-// 切换移动端菜单
-const toggleMobileMenu = () => {
-  mobileMenuOpen = !mobileMenuOpen
+const handleScroll = () => {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+  navbarOpacity.value = Math.max(1 - scrollTop / 300, 0.3)
 }
 
-const closeMobileMenu = () => {
-  mobileMenuOpen = false
-}
-
-// 导航项
-const navItems = [
-  { name: '首页', path: '/home' },
-  { name: '历史', path: '/history' },
-  { name: '壁画', path: '/mural' },
-  { name: '飞天', path: '/feitian' },
-  { name: '莫高窟', path: '/mogao' }
-]
-
-// 获取当前激活的菜单
-const isActive = (path) => {
-  return route.path === path
-}
-
-// 导航跳转
-const handleNavigation = (path) => {
-  router.push(path)
-  closeMobileMenu()
-}
-
-const handleLogin = () => {
-  router.push('/login')
-  closeMobileMenu()
-}
-
-const handleRegister = () => {
-  router.push('/register')
-  closeMobileMenu()
-}
-
-const handleLogout = () => {
-  router.push('/login')
-}
-
-// 监听路由变化，关闭移动端菜单
-watch(route, () => {
-  closeMobileMenu()
+// 当前激活的菜单
+const activeIndex = computed(() => {
+  const path = route.path
+  if (path === '/' || path === '/home') return '/'
+  return path
 })
 
+// 导航跳转
+const handleSelect = (index) => {
+  router.push(index)
+}
+
+const confirmLogout = () => {
+  ElMessageBox.confirm('确定要退出登录吗？', '提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  }).then(() => {
+    localStorage.removeItem('isLoggedIn')
+    localStorage.removeItem('username')
+    router.push('/login')
+  }).catch(() => {})
+}
+
 onMounted(() => {
-  closeMobileMenu()
+  window.addEventListener('scroll', handleScroll)
 })
 </script>
 
