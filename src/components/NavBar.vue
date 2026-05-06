@@ -32,74 +32,69 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted, onUnmounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { ElMessage, ElMessageBox } from 'element-plus'
+import { onMounted, watch } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 
-const route = useRoute()
 const router = useRouter()
+const route = useRoute()
 
-const activeIndex = computed(() => route.path)
+// 滚动控制导航栏透明度
+let lastScrollTop = 0
 
-const navbarOpacity = ref(1)
-const username = ref(localStorage.getItem('username') || '')
-const isLoggedIn = ref(localStorage.getItem('isLoggedIn') === 'true')
+// 移动端菜单展开状态
+let mobileMenuOpen = false
 
-const handleSelect = (index) => {
-  router.push(index)
+// 切换移动端菜单
+const toggleMobileMenu = () => {
+  mobileMenuOpen = !mobileMenuOpen
 }
 
-const handleScroll = () => {
-  const scrollY = window.scrollY || window.pageYOffset
-  // 当滚动超过50px时开始降低透明度
-  // 滚动到200px时透明度降到0.7
-  if (scrollY < 50) {
-    navbarOpacity.value = 1
-  } else if (scrollY > 200) {
-    navbarOpacity.value = 0.7
-  } else {
-    // 50-200px之间线性过渡
-    const progress = (scrollY - 50) / 150 // 0到1之间的进度
-    navbarOpacity.value = 1 - (progress * 0.3) // 从1降到0.7
-  }
+const closeMobileMenu = () => {
+  mobileMenuOpen = false
 }
 
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll, { passive: true })
-  handleScroll() // 初始化时也执行一次
-})
+// 导航项
+const navItems = [
+  { name: '首页', path: '/home' },
+  { name: '历史', path: '/history' },
+  { name: '壁画', path: '/mural' },
+  { name: '飞天', path: '/feitian' },
+  { name: '莫高窟', path: '/mogao' }
+]
 
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
+// 获取当前激活的菜单
+const isActive = (path) => {
+  return route.path === path
+}
+
+// 导航跳转
+const handleNavigation = (path) => {
+  router.push(path)
+  closeMobileMenu()
+}
+
+const handleLogin = () => {
+  router.push('/login')
+  closeMobileMenu()
+}
+
+const handleRegister = () => {
+  router.push('/register')
+  closeMobileMenu()
+}
 
 const handleLogout = () => {
-  // 清除登录状态
-  localStorage.removeItem('isLoggedIn')
-  localStorage.removeItem('username')
-  isLoggedIn.value = false
-  
-  ElMessage.success('已退出登录')
-  
-  // 跳转到登录页
   router.push('/login')
 }
 
-const confirmLogout = () => {
-  ElMessageBox.confirm(
-    '确定要退出登录吗？',
-    '提示',
-    {
-      confirmButtonText: '退出登录',
-      cancelButtonText: '取消',
-      type: 'warning'
-    }
-  ).then(() => {
-    handleLogout()
-  }).catch(() => {
-    // 取消不做处理
-  })
-}
+// 监听路由变化，关闭移动端菜单
+watch(route, () => {
+  closeMobileMenu()
+})
+
+onMounted(() => {
+  closeMobileMenu()
+})
 </script>
 
 <style scoped>
